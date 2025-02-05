@@ -1,0 +1,9 @@
+### 実行方法
+```bash
+cd frontend
+pip install streamlit requests
+```
+### 実行方法
+```
+streamlit run app.py
+```

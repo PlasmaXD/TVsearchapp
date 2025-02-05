@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+selenium
+webdriver-manager
+urllib3==1.26.13
+google-cloud-datastore

@@ -1,0 +1,92 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  annotations:
+    run.googleapis.com/client-name: gcloud
+    run.googleapis.com/client-version: 509.0.0
+    run.googleapis.com/ingress: all
+    run.googleapis.com/ingress-status: all
+    run.googleapis.com/operation-id: ae0ba123-dfb3-4c0b-980d-e79d825eadd6
+    run.googleapis.com/urls: '["https://tv-front-383728560258.us-central1.run.app","https://tv-front-2sxspb2cea-uc.a.run.app"]'
+    serving.knative.dev/creator: masutadoz@gmail.com
+    serving.knative.dev/lastModifier: 383728560258-compute@developer.gserviceaccount.com
+  creationTimestamp: '2025-02-05T09:23:01.993840Z'
+  generation: 11
+  labels:
+    cloud.googleapis.com/location: us-central1
+    commit-sha: e808a043960b1bd77e91cd7192446008f66bc099
+    gcb-build-id: 6c6e209f-3535-415c-be86-37ed1602b826
+    gcb-trigger-id: 80517f7c-54f5-4ccb-993d-c954a13bddd7
+    gcb-trigger-region: global
+    managed-by: gcp-cloud-build-deploy-cloud-run
+  name: tv-front
+  namespace: '383728560258'
+  resourceVersion: AAYtYoZW+FQ
+  selfLink: /apis/serving.knative.dev/v1/namespaces/383728560258/services/tv-front
+  uid: ab7c325f-b8c8-4869-8c67-83c5c35d0704
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: '100'
+        run.googleapis.com/client-name: gcloud
+        run.googleapis.com/client-version: 509.0.0
+        run.googleapis.com/startup-cpu-boost: 'true'
+      labels:
+        client.knative.dev/nonce: xvgefmefro
+        commit-sha: e808a043960b1bd77e91cd7192446008f66bc099
+        gcb-build-id: 6c6e209f-3535-415c-be86-37ed1602b826
+        gcb-trigger-id: 80517f7c-54f5-4ccb-993d-c954a13bddd7
+        gcb-trigger-region: global
+        managed-by: gcp-cloud-build-deploy-cloud-run
+        run.googleapis.com/startupProbeType: Default
+    spec:
+      containerConcurrency: 80
+      containers:
+      - env:
+        - name: client_secret.json
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: client-secret
+        image: us-central1-docker.pkg.dev/cryptic-pipe-435706-n0/cloud-run-source-deploy/0104/tv-front:e808a043960b1bd77e91cd7192446008f66bc099
+        name: placeholder-1
+        ports:
+        - containerPort: 8501
+          name: http1
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 512Mi
+        startupProbe:
+          failureThreshold: 1
+          periodSeconds: 240
+          tcpSocket:
+            port: 8501
+          timeoutSeconds: 240
+      serviceAccountName: 383728560258-compute@developer.gserviceaccount.com
+      timeoutSeconds: 300
+  traffic:
+  - latestRevision: true
+    percent: 100
+status:
+  address:
+    url: https://tv-front-2sxspb2cea-uc.a.run.app
+  conditions:
+  - lastTransitionTime: '2025-02-05T10:24:04.155476Z'
+    status: 'True'
+    type: Ready
+  - lastTransitionTime: '2025-02-05T10:24:02.617626Z'
+    status: 'True'
+    type: ConfigurationsReady
+  - lastTransitionTime: '2025-02-05T10:24:04.117966Z'
+    status: 'True'
+    type: RoutesReady
+  latestCreatedRevisionName: tv-front-00010-vxd
+  latestReadyRevisionName: tv-front-00010-vxd
+  observedGeneration: 11
+  traffic:
+  - latestRevision: true
+    percent: 100
+    revisionName: tv-front-00010-vxd
+  url: https://tv-front-2sxspb2cea-uc.a.run.app

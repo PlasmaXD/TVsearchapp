@@ -1,0 +1,15 @@
+# TVapp/docker-compose.yml
+
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: tvapp-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    tmpfs:
+      - /dev/shm
