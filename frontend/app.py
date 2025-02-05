@@ -44,7 +44,6 @@ def create_flow():
 # ===============================
 
 # BACKEND_URL = "http://127.0.0.1:8000"
-# BACKEND_URL = "https://tv-fastapi-383728560258.us-central1.run.app"
 if "search_results" not in st.session_state:
     st.session_state.search_results = []
 if "search_query" not in st.session_state:
