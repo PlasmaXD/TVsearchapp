@@ -22,7 +22,7 @@ SCOPES = [
     "https://www.googleapis.com/auth/userinfo.email",
     "https://www.googleapis.com/auth/userinfo.profile",
 ]
-REDIRECT_URI = BACKEND_URL
+REDIRECT_URI = os.getenv('REDIRECT_URI')
 
 # "http://localhost:8501"  # ローカルならコレ, デプロイするならURLを合わせる
 
@@ -43,7 +43,6 @@ def create_flow():
 # ここからApp機能(検索、レビュー等)
 # ===============================
 
-# BACKEND_URL = "http://127.0.0.1:8000"
 if "search_results" not in st.session_state:
     st.session_state.search_results = []
 if "search_query" not in st.session_state:
