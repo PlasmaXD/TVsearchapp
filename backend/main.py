@@ -1,5 +1,5 @@
 # main.py
-from fastapi import FastAPI, Query, HTTPException
+from fastapi import FastAPI, Query, HTTPException, Depends, Request
 from typing import List
 from scraper import get_program_details  # スクレイピングロジックがある場合
 from database import (
@@ -8,6 +8,7 @@ from database import (
     add_favorite, get_favorites
 )
 from models import UserCreate, User, ReviewCreate, Review
+from recommendation import recommend_programs
 
 app = FastAPI()
 
@@ -112,3 +113,12 @@ def get_favorite_list(user_id: str):
     """
     programs = get_favorites(user_id)
     return {"user_id": user_id, "favorite_programs": programs}
+
+
+@app.get("/recommendations/{user_id}")
+def get_recommendations(user_id: str, n: int = 10):
+    """
+    ユーザーIDと推薦件数を指定して番組推薦を受け取るエンドポイント
+    """
+    recommended = recommend_programs(user_id, n_recommendations=n)
+    return {"recommendations": recommended}
